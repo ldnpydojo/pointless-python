@@ -3,9 +3,14 @@ import os, sys
 import importlib
 import importlib.abc
 
+import urlloader
+
 class GithubLoader():
+    def __init__(self):
+        root = "https://raw.githubusercontent.com/markeganfuller/test-dojo/master"
+
     def load_module(self, name):
-        raise ImportError("I'm loading %s from github" % name)
+        return urlloader.load_module(root + name.replace("_", "-") + ".py")
 
 class GithubImporter(object):
 
@@ -17,12 +22,9 @@ class GithubImporter(object):
         return None
 
 
-
-
 sys.meta_path = [GithubImporter()]
 #~ sys.path_hooks = [Import]
 #~ print(sys.path_hooks)
 
-
-
-import ldnpydojo
+import test_dojo
+test_dojo.hello()

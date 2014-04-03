@@ -10,7 +10,7 @@ def get_file(url):
 
 def string_to_module(name, module_string):
     module = imp.new_module(name)
-    exec module_string in module.__dict__
+    exec(module_string, module.__dict__)
     return module
 
 
