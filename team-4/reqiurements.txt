@@ -1,0 +1,2 @@
+audiolazy==0.05
+PyAudio==0.2.7
